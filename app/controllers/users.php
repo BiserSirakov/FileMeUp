@@ -8,12 +8,12 @@ class UsersController extends BaseController {
 	function register() {
 		$errors = array();
 		if ($_POST) {
-			$email = $_POST['email'];
+			$username = $_POST['username'];
 			$password = $_POST['password'];
 			$password_confirm = $_POST['confirm'];
 
-			if (!$email) {
-				$errors[] = 'Email is required';
+			if (!$username) {
+				$errors[] = 'Username is required';
 			}
 			
 			if (!$password) {
@@ -25,10 +25,11 @@ class UsersController extends BaseController {
 			}
 			
 			$model = new Users();
-			$result = $model->register($email, $password);
+			$result = $model->register($username, $password);
+
 			if ($result) {
-				$_SESSION['user_email'] = $email;
-				header('Location: index.php?q=site/home');
+				$_SESSION['user'] = $result;
+				header('Location: index.php');
 			} else {
 				$errors[] = 'Error while trying to register. Please try again.';
 			}
@@ -41,24 +42,25 @@ class UsersController extends BaseController {
 	function login() {
 		$errors = array();
 		if ($_POST) {
-			$email = $_POST['email'];
+			$username = $_POST['username'];
 			$password = $_POST['password'];
 			
-			if (!$email) {
-				$errors[] = 'Email is required';
+			if (!isset($username) || trim($username) === '') {
+				$errors[] = 'Username is required';
 			}
 			
-			if (!$password) {
+			if (!isset($password) || trim($password) === '') {
 				$errors[] = 'Password is required';
 			}
-			
+
 			$model = new Users();
-			$result = $model->login($email, $password);
+			$result = $model->login($username, $password);
+			
 			if ($result) {
-				$_SESSION['user_email'] = $email;
-				header('Location: index.php?q=site/home');
+				$_SESSION['user'] = $result;
+				header('Location: index.php');
 			} else {
-				$errors[] = 'Error while trying to login. Please try again.';
+				$errors[] = 'Wrong username or password.';
 			}
 		}
 

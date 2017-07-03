@@ -1,38 +1,33 @@
-<!--<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  	<meta name="viewport" content="width=device-width, initial-scale=1">
-  	<title>FILE ME UP - Login</title>
-  	<link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;amp;lang=en" rel="stylesheet">
-  	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  	<link href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css" rel="stylesheet">
-  	<link href="styles/main.css" rel="stylesheet">
-</head>
-
-<body>-->
-
-<ul>
-<?php
-
-	foreach($params['errors'] as $error) {
-		echo "<li>$error</li>";
-	}
-
-?>
-</ul>
+<div class="login-card mdl-card mdl-shadow--6dp">
 <form method="post">
-	Email: <br />
-	<input type="text" name="email"><br />
-	Password: <br />
-	<input type="password" name="password"> <br />
-	<br />
-	<input type="submit" value="Log in">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Log in</h2>
+  </div>
+
+  <div class="mdl-card__supporting-text">
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+	  <input class="mdl-textfield__input" type="text" id="username" name="username">
+	  <label class="mdl-textfield__label" for="username">Username</label>
+	</div>
+	<br>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<input class="mdl-textfield__input" type="password" id="password" name="password">
+		<label class="mdl-textfield__label" for="password">Password</label>
+	</div>
+  </div>
+  
+  <div class="mdl-card__actions mdl-card--border">
+    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--primary mdl-js-ripple-effect">
+      Log in
+    </button>
+  </div>
 </form>
+</div>
 
-	<!--<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-</body>
-
-</html>-->
+<ul class="errors-list mdl-list">
+	<?php
+		foreach($params["errors"] as $error) {
+			echo '<li class="mdl-list__item"><span class="mdl-list__item-primary-content">'.$error.'</span></li>';
+		}
+	?>
+</ul>

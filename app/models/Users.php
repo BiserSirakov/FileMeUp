@@ -6,18 +6,23 @@ class Users extends BaseModel {
 
 	public $table_name = 'users';
 
-	function register($email, $password) {
-		$sql = "INSERT INTO Users (email, password, join_date) VALUES(?, ?, ?)";
-		$stmt = $this->conn->prepare($sql);
-		$result = $stmt->execute(array($email, sha1($password), date('Y-m-d H:i:s')));
+	function register($username, $password) {
+		$stmt = $this->conn->prepare("INSERT INTO {$this->table_name} (username, password, join_date) VALUES(?, ?, ?)");
+		$result = $stmt->execute(array($username, sha1($password), date('Y-m-d H:i:s')));
+
+		if ($result) {
+			$stmt = $this->conn->prepare("SELECT * FROM {$this->table_name} WHERE username=? and password=?");
+			$stmt->execute(array($username, sha1($password)));
+			return $stmt->fetch();
+		}
+
 		return $result;
 	}
 	
-	function login($email, $password) {
-		$sql = "SELECT * FROM Users WHERE email=? and password=?";
-		$stmt = $this->conn->prepare($sql);
-		$result = $stmt->execute(array($email, sha1($password)));
-		return $result;
+	function login($username, $password) {
+		$stmt = $this->conn->prepare("SELECT * FROM {$this->table_name} WHERE username=? and password=?");
+		$stmt->execute(array($username, sha1($password)));
+		return $stmt->fetch();
 	}
 
 }

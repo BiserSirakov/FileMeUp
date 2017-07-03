@@ -1,3 +1,35 @@
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../material-icons/MaterialIcons-Regular.eot');
+  /* For IE6-8 */
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url('../material-icons/MaterialIcons-Regular.woff2') format('woff2'), url('../material-icons/MaterialIcons-Regular.woff') format('woff'), url('../material-icons/MaterialIcons-Regular.ttf') format('truetype');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
 img {
   max-width: 100%;
 }
@@ -80,6 +112,7 @@ img {
 }
 
 .mdl-layout__content {
+  /*overflow: visible;*/
   background-color: #fefefe;
 }
 
@@ -101,7 +134,7 @@ img {
   max-width: 700px;
 }
 
-.welcome-card > .mdl-card__title {
+.welcome-card>.mdl-card__title {
   color: #fff;
   height: 290px;
   background: url("../img/cover.jpg") center/cover;
@@ -117,10 +150,10 @@ img {
 
 .event-card .mdl-card__title {
   -ms-flex-align: start;
-      align-items: flex-start;
+  align-items: flex-start;
 }
 
-.event-card .mdl-card__title > h4 {
+.event-card .mdl-card__title>h4 {
   margin-top: 0;
 }
 
@@ -129,16 +162,16 @@ img {
   display: flex;
   box-sizing: border-box;
   -ms-flex-align: center;
-      align-items: center;
+  align-items: center;
 }
 
-.event-card .mdl-card__actions > .material-icons {
+.event-card .mdl-card__actions>.material-icons {
   padding-right: 10px;
 }
 
 .event-card .mdl-card__title,
 .event-card .mdl-card__actions,
-.event-card .mdl-card__actions > .mdl-button {
+.event-card .mdl-card__actions>.mdl-button {
   color: #fff;
 }
 
@@ -192,7 +225,7 @@ img.article-image {
   background: url("../img/person2.jpg") center/cover;
 }
 
-.demo-card-image > .mdl-card__actions {
+.demo-card-image>.mdl-card__actions {
   height: 52px;
   padding: 16px;
   background: rgba(0, 0, 0, 0.3);
@@ -226,4 +259,39 @@ footer .mdl-logo a {
 
 .footer-container {
   margin: 0 auto;
+}
+
+.login-card.mdl-card {
+  margin: 8em auto;
+  margin-bottom: 10px;
+  /*max-width: 700px;*/
+  /*width: 100%;*/
+  min-height: auto;
+}
+
+.errors-list {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.mdl-list__item-primary-content {
+  justify-content: center;
+  color: red;
+}
+
+.mdl-dialog {
+  width: 350px;
+}
+
+.mdl-card__title-text {
+  margin: 24px 0;
+}
+
+.mdl-textfield--file .mdl-textfield__input {
+  box-sizing: border-box;
+  width: calc(100% - 32px);
+}
+
+.mdl-textfield--file .mdl-button--file {
+  right: 0;
 }
